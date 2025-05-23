@@ -16,5 +16,22 @@ public class Main {
 
         System.out.printf("Selling price of %s: %.2f\n", yogurt.getName(), priceYogurt);
         System.out.printf("Selling price of %s: %.2f\n", soap.getName(), priceSoap);
+
+        //Create cashier
+        Cashier cashier = new Cashier("C1", "Alex", 1500);
+        System.out.println("Created cashier:" + cashier);
+
+        //Create SaleItems
+        SaleItem item1 = new SaleItem(yogurt, 2);
+        SaleItem item2 = new SaleItem(soap, 3);
+
+        //Create Receipt
+        Receipt receipt = new Receipt(cashier);
+        receipt.addItem(item1);
+        receipt.addItem(item2);
+        receipt.finalizeReceipt();
+
+        System.out.println("\n=== Simulated Receipt Output ===");
+        System.out.println(receipt);
     }
 }

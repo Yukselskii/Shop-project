@@ -1,6 +1,6 @@
 Receipt #2
 Cashier: Alex
-Date: 24.05.2025 15:24:13
+Date: 24.05.2025 15:43:16
 Items:
  - Milk x2 | 1.20 BGN = 2.40 BGN
 Total: 2.40 BGN

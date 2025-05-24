@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Represents a receipt with cashier and sold items.
+ * Представлява касова бележка с касиер и продадени артикули.
  */
 public class Receipt implements Serializable {
     private static long counter = 0;

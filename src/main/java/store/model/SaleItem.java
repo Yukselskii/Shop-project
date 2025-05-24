@@ -1,6 +1,8 @@
 package store.model;
 
-public class SaleItem {
+import java.io.Serializable;
+
+public class SaleItem implements Serializable {
     private final Product product;
     private final int quantity;
     private final double unitPrice;

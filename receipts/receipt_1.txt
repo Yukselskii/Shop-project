@@ -1,0 +1,6 @@
+Receipt #1
+Cashier: Alex
+Date: 24.05.2025 15:12:58
+Items:
+ - Cheese x1 | 3.00 BGN = 3.00 BGN
+Total: 3.00 BGN

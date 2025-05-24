@@ -102,9 +102,9 @@ public class Main {
             System.out.println("\n=== Receipt ===");
             System.out.println(receipt);
         } catch (InsufficientStockException | ExpiredProductException e) {
-            System.out.println("⚠️ Sale failed: " + e.getMessage());
+            System.out.println("Sale failed: " + e.getMessage());
         } catch (Exception e) {
-            System.out.println("⚠️ Unexpected error: " + e.getMessage());
+            System.out.println("Unexpected error: " + e.getMessage());
         }
     }
 

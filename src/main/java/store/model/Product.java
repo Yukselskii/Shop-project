@@ -8,11 +8,11 @@ import java.time.temporal.ChronoUnit;
  */
 
 public abstract class Product implements Serializable {
-    private String id;
-    private String name;
-    private double deliveryPrice;
-    private ProductType type;
-    private LocalDate expirationDate;
+    private final String id;
+    private final String name;
+    private final double deliveryPrice;
+    private final ProductType type;
+    private final LocalDate expirationDate;
     protected int quantity;
 
     public Product(String id, String name, double deliveryPrice, ProductType type, LocalDate expirationDate, int quantity) {
@@ -59,8 +59,8 @@ public abstract class Product implements Serializable {
     public double getSellingPrice() {
         double price = deliveryPrice * (1 + getMarkupPercent() / 100.0);
 
-        long daysleft = ChronoUnit.DAYS.between(LocalDate.now(), expirationDate);
-        if (daysleft >= 0 && daysleft < getDiscountThresholdDays()) {
+        long daysLeft = ChronoUnit.DAYS.between(LocalDate.now(), expirationDate);
+        if (daysLeft >= 0 && daysLeft < getDiscountThresholdDays()) {
             price *= (1 - getDiscountPercent() / 100.0);
         }
 

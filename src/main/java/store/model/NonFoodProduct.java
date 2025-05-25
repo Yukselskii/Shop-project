@@ -6,7 +6,7 @@ import java.time.LocalDate;
  * Клас за нехранителни стоки. Няма намаление при наближаващ срок.
  */
 public class NonFoodProduct extends Product {
-    private static double markupPercent = 30.0;
+    private static final double markupPercent = 30.0;
 
     public NonFoodProduct(String id, String name, double deliveryPrice, LocalDate expirationDate, int quantity) {
         super(id, name, deliveryPrice, ProductType.NON_FOOD, expirationDate, quantity);
@@ -27,7 +27,5 @@ public class NonFoodProduct extends Product {
         return 0;
     }
 
-    public static void setMarkupPercent(double percent) {
-        markupPercent = percent;
-    }
+
 }

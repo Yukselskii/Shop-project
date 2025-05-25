@@ -15,7 +15,7 @@ public class FileUtil {
     public static void saveReceipt(Receipt receipt) throws IOException {
         String fileName = String.format("%s/receipt_%d.txt", DIR, receipt.getNumber());
         try (PrintWriter pw = new PrintWriter(fileName)) {
-            pw.print(receipt.toString());
+            pw.print(receipt);
         }
 
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(

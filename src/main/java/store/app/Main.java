@@ -10,18 +10,15 @@ import java.util.*;
 public class Main {
     private static final Scanner scanner = new Scanner(System.in);
     private static final Inventory inventory = new Inventory();
-    private static CashDesk cashDesk;
+    private static final List<Cashier> cashiers = new ArrayList<>();
 
     public static void main(String[] args) {
         System.out.println("=== Welcome to Store Management ===");
 
-        // Add a cashier
-        Cashier cashier = new Cashier("C1", "Alex", 1500);
-        cashDesk = new CashDesk(cashier, inventory);
-
-        // Add some sample products
-        inventory.addProduct(new FoodProduct("F1", "Yogurt", 1.2, LocalDate.now().plusDays(5), 10));
-        inventory.addProduct(new NonFoodProduct("N1", "Soap", 0.8, LocalDate.now().plusMonths(6), 20));
+        // Добавяне на 3 предварително зададени касиери
+        cashiers.add(new Cashier("C1", "Alex", 1500));
+        cashiers.add(new Cashier("C2", "Maria", 1600));
+        cashiers.add(new Cashier("C3", "Ivan", 1400));
 
         while (true) {
             System.out.println("\n--- MENU ---");
@@ -88,6 +85,24 @@ public class Main {
     }
 
     private static void makeSale() {
+        if (cashiers.isEmpty()) {
+            System.out.println("No cashiers available.");
+            return;
+        }
+
+        System.out.println("Available cashiers:");
+        for (int i = 0; i < cashiers.size(); i++) {
+            System.out.printf("%d: %s\n", i + 1, cashiers.get(i).getName());
+        }
+        System.out.print("Choose cashier by number: ");
+        int cashierIndex = Integer.parseInt(scanner.nextLine()) - 1;
+        if (cashierIndex < 0 || cashierIndex >= cashiers.size()) {
+            System.out.println("Invalid cashier selection.");
+            return;
+        }
+
+        CashDesk cashDesk = new CashDesk(cashiers.get(cashierIndex), inventory);
+
         try {
             Map<String, Integer> cart = new HashMap<>();
             while (true) {
@@ -110,6 +125,5 @@ public class Main {
 
     private static void showFinancialInfo() {
         System.out.printf("Total revenue: %.2f BGN\n", Receipt.getTotalRevenue());
-        // For simplicity, salary and delivery costs can be hardcoded or extended later
     }
 }
